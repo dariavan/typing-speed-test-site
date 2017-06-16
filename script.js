@@ -6,7 +6,7 @@ const theTimer = document.querySelector(".timer");
 
 
 // Add leading zero to numbers 9 or below (purely for aesthetics):
-
+theTimer.innerHTML =
 
 // Run a standard minute/second/hundredths timer:
 
@@ -24,7 +24,11 @@ function start(){
 }
 
 // Reset everything:
+function reset(){
+  testArea.value='';
+}
 
+resetButton.addEventListener("click", reset, false)
 
 // Event listeners for keyboard input and the reset button:
 testArea.addEventListener("keypress", start, false);
