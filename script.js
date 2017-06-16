@@ -30,9 +30,8 @@ function runTimer(){
 // Match the text entered with the provided text on the page:
 function spellCheck(){
   let textEntered = testArea.value;
-  let originTextMatch =  originText.substring(0, textEntered.length);
-
-  if (textEntered == originText) {
+  let originTextMatch =  document.querySelector("#origin-text p").innerHTML.substring(0, textEntered.length);
+  if (textEntered == document.querySelector("#origin-text p").innerHTML) {
     testWrapper.style.borderColor = "green";
     clearInterval(interval);
   } else {
