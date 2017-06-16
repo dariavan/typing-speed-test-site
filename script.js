@@ -4,12 +4,14 @@ const originText = document.querySelector("#origin-text p").innerHTML;
 const resetButton = document.querySelector("#reset");
 const theTimer = document.querySelector(".timer");
 
-
+var timer = 0;
 // Add leading zero to numbers 9 or below (purely for aesthetics):
-theTimer.innerHTML =
 
 // Run a standard minute/second/hundredths timer:
-
+function runTimer(){
+  theTimer.innerHTML = timer;
+  timer++;
+}
 
 // Match the text entered with the provided text on the page:
 function spellCheck(){
@@ -20,12 +22,19 @@ function spellCheck(){
 // Start the timer:
 function start(){
   let textEnteredLength = testArea.value.length;
+  if (textEnteredLength === 0) {
+    setInterval(runTimer, 10);
+  }
   console.log(textEnteredLength);
 }
 
 // Reset everything:
 function reset(){
   testArea.value='';
+  if (testArea.value.length === 0) {
+  timer=0;
+  theTimer.innerHTML = 0;
+}
 }
 
 resetButton.addEventListener("click", reset, false)
