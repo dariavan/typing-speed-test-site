@@ -42,7 +42,7 @@ function reset(){
   timer[2]=0;
   timer[3]=0;
 }
-  
+
 }
 
 resetButton.addEventListener("click", reset, false);
