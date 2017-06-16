@@ -4,13 +4,18 @@ const originText = document.querySelector("#origin-text p").innerHTML;
 const resetButton = document.querySelector("#reset");
 const theTimer = document.querySelector(".timer");
 
-var timer = 0;
+var timer = [0,0,0,0];
 // Add leading zero to numbers 9 or below (purely for aesthetics):
 
 // Run a standard minute/second/hundredths timer:
 function runTimer(){
-  theTimer.innerHTML = timer;
-  timer++;
+  let currentTime = timer[0] + ":" + timer[1] +":" + timer[2];
+  theTimer.innerHTML = currentTime;
+  timer[3]++;
+
+  timer[0] = Math.floor((timer[3]/100)/60);
+  timer[1] = Math.floor((timer[3]/100)- timer[0]*60);
+  timer[2] = Math.floor(timer[3]- (timer[1]*100)- (timer[0]*6000));
 }
 
 // Match the text entered with the provided text on the page:
@@ -32,12 +37,15 @@ function start(){
 function reset(){
   testArea.value='';
   if (testArea.value.length === 0) {
-  timer=0;
-  theTimer.innerHTML = 0;
+  timer[0]=0;
+  timer[1]=0;
+  timer[2]=0;
+  timer[3]=0;
 }
+  
 }
 
-resetButton.addEventListener("click", reset, false)
+resetButton.addEventListener("click", reset, false);
 
 // Event listeners for keyboard input and the reset button:
 testArea.addEventListener("keypress", start, false);
